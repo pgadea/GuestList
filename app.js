@@ -17,11 +17,23 @@ new Vue({
     },
     methods: {
         formSubmitted: function() {
+            console.log('method')
             if(this.newNameText.length > 0 && this.eventCapacityPercentage < 100) {
                 this.guestName.push(this.newNameText)
                 this.newNameText = ''
                 this.eventCapacityPercentage = this.guestName.length / (this.eventCapacity / 100)
             }
+        }   
+    },
+    computed: {
+        sortNames: function() {
+            console.log('computed')
+            return this.guestName.sort()
+        }
+    },
+    watch: {
+        guestName: function(data){
+            console.log('Watch triggered')
         }
     }
 });
