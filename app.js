@@ -9,20 +9,19 @@ new Vue({
         },
         newNameText: '',
         guestName: [],
-        appStyles: {
-            marginTop: '25px'
-        },
         eventCapacity: 25,
         eventCapacityPercentage: 0
     },
     methods: {
         formSubmitted: function() {
-            console.log('method')
             if(this.newNameText.length > 0 && this.eventCapacityPercentage < 100) {
                 this.guestName.push(this.newNameText)
                 this.newNameText = ''
                 this.eventCapacityPercentage = this.guestName.length / (this.eventCapacity / 100)
             }
+        },
+        keyPressed: function() {
+            console.log('key pressed')
         }   
     },
     computed: {
@@ -35,5 +34,17 @@ new Vue({
         guestName: function(data){
             console.log('Watch triggered')
         }
+    },
+    filters: {
+        formatName: function(value) {
+            return value.slice(0, 1).toUpperCase() + value.slice(1).toLowerCase()
+        }
     }
 });
+
+new Vue({
+    el: '#navigation',
+    data: {
+        appName: 'Guest List'
+    }
+})
