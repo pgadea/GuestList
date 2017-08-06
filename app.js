@@ -1,4 +1,4 @@
-new Vue({
+var vm1 = new Vue({
     el: '#app',
     data: {
         event: {
@@ -39,12 +39,50 @@ new Vue({
         formatName: function(value) {
             return value.slice(0, 1).toUpperCase() + value.slice(1).toLowerCase()
         }
+    },
+    beforeCreate: function() {
+        console.log('beforeCreate')
+    },
+    created: function() {
+        console.log('created')
+    },
+    beforeMount: function() {
+        console.log('beforeMount')
+    },
+    mounted: function() {
+        console.log('mounted')
+    },
+    beforeUpdate: function() {
+        console.log('beforeUpdate')
+    },
+    updated: function() {
+        console.log('updated')
+    },
+    beforeDestroy: function() {
+        console.log('beforeDestroy')
+    },
+    destroyed: function() {
+        console.log('destroyed')
     }
 });
 
-new Vue({
+var vm2 = new Vue({
     el: '#navigation',
     data: {
-        appName: 'Guest List'
+        appName: 'Guest List',
+        navLinks: [
+            {name: "Home", id: 1, url: "https://www.google.com"},
+            {name: "Upcoming events", id: 2, url: "https://www.amazon.com"},
+            {name: "Guest Benefits", id: 3, url: "https://www.ebay.com"},
+            {name: "Latest News", id: 4, url: "https://www.facebook.com"}
+        ]
+    },
+    methods: {
+        changeTitle: function() {
+            this.$refs.name.hidden = true
+            console.log(this.$refs)
+        }
     }
 })
+
+console.log(vm1)

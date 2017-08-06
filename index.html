@@ -15,9 +15,19 @@
     <div id="navigation">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h1>{{ appName }}</h1>
+          <h1 @click="changeTitle" ref="name">Guest List</h1>
+          <hr>
+        </div>
+        <div>
+          <ul>
+            <ul class="nav"></ul>
+            <div v-for="navLink in navLinks" :key="navLink.id">
+              <li class="nav-item"><a class="nav-link" :href="navLink.url">{{ navLink.name }}</a></li>
+            </div>
+          </ul>
         </div>
       </div>
+      <hr>
     </div>
      <div id="app">
     
